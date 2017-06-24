@@ -1,5 +1,6 @@
+import util.Timer
 
-object SequentialPNorm extends App{
+object SequentialPNorm extends App {
 
   def pNorm(a: Array[Int], p: Double): Int = {
 
@@ -29,8 +30,8 @@ object SequentialPNorm extends App{
     power(sumSegment(a, p, 0, a.length), 1/p)
   }
 
-  val arr = for (i <- 0 to 5000) yield i
-  val p = pNorm(arr.toArray, 2)
+  val arr = for (i <- 0 to 4000000) yield i
+  val (res, time) = Timer.measure(pNorm(arr.toArray, 2))
 
-  println(p)
+  println(s"\t$res \t$time ms")
 }
