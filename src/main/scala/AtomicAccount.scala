@@ -1,4 +1,4 @@
-object RunAtomicAccount extends App {
+object AtomicAccount extends App {
   private var uidCount = 0L
   private val x = new AnyRef
 

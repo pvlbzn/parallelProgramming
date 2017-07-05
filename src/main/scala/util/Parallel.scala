@@ -38,6 +38,13 @@ package object Parallel {
     scheduler.value.schedule(body)
   }
 
+  /**
+    * Arguments are taken by name. Signature
+    *   def parallel [A, B] (ATask: A, BTask B): (A, B) = { ... }
+    * will work, but not in parallel. Because this signature will
+    * evaluate sequentially. For parallelism, need to pass
+    * unevaluated computations, call by name.
+    */
   def parallel [A, B] (ATask: => A, BTask: => B): (A, B) = {
     scheduler.value.parallel(ATask, BTask)
   }
